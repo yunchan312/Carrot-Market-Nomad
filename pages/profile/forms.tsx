@@ -20,18 +20,19 @@ const Forms: NextPage = () => {
     register,
     setError,
     handleSubmit,
+    reset,
     formState: { errors },
+    resetField,
   } = useForm<LoginForm>({
     mode: "onChange",
   });
   const onValid = (data: LoginForm) => {
     console.log("i am valid");
-    setError("username", { message: "Taken Username" });
+    resetField("password");
   };
   const onInvalid = (errors: FieldErrors) => {
     console.log(errors);
   };
-  console.log(errors);
   return (
     <form onSubmit={handleSubmit(onValid, onInvalid)}>
       <input
